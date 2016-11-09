@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="./css/spectre.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <title>What am i pressing?</title>
+</head>
+<body>
+<div class="container grid-960">
+<div class="columns">
+  <div class="column col-3 hide-sm"></div>
+  <div class="column col-6 col-sm-12">
+  <h1>What am i pressing?</h1>
+    <pre class="code">
+Click in here
+<br>
+and press a key.
+    </pre>
+    <div class="columns text-center">
+      <div class="column col-3">
+        <button class="btn disabled shift">Shift</button>
+      </div>
+      <div class="column col-3">
+        <button class="btn disabled ctrl">Ctrl</button>
+      </div>
+      <div class="column col-3">
+        <button class="btn disabled alt">Alt</button>
+      </div>
+      <div class="column col-3">
+        <button class="btn disabled meta">Meta</button>
+      </div>
+    </div>
+  </div>
+  <div class="column col-3 hide-sm"></div>
+</div>
+</div>
+  
+<script type="text/javascript">
+
+$("body").on("keydown", function(event) {
+    console.log(event.keyCode);
+    $(".code").html('{\n pressed: "'+event.key+'",\n\t[\n\t code: '+event.keyCode+',\n\t shiftKey: '+event.shiftKey+',\n\t ctrlKey: '+event.ctrlKey+',\n\t altKey: '+event.altKey+',\n\t metaKey: '+event.metaKey+' \n\t]\n}');
+    if(event.shiftKey){
+      $('.shift').addClass('btn-primary');
+    }else{
+      $('.shift').removeClass('btn-primary');
+    }
+    if(event.altKey){
+      $('.alt').addClass('btn-primary');
+    }else{
+      $('.alt').removeClass('btn-primary');
+    }
+    if(event.ctrlKey){
+      $('.ctrl').addClass('btn-primary');
+    }else{
+      $('.ctrl').removeClass('btn-primary');
+    }
+    if(event.metaKey){
+      $('.meta').addClass('btn-primary');
+    }else{
+      $('.meta').removeClass('btn-primary');
+    }
+});
+</script> 
+</body>
+</html>
